@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="NetScrattinoWin.PinControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NetScrattinoWin"
+             mc:Ignorable="d" 
+             d:DesignHeight="30" d:DesignWidth="500">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="{Binding PinName}" Grid.Row="0" Margin="0,7" TextWrapping="Wrap"  TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" />
+        <ComboBox  ItemsSource="{Binding PinModeItems}" 
+                   SelectedIndex="{Binding PinModeIndex}"
+                   Grid.Column="1"  Grid.Row="0" Margin="2" />
+        <TextBlock 
+            Visibility="{Binding DigitalInputValueVisible}"
+            Text="{Binding DigitalInputValueText }"
+            Grid.Column="2" Margin="2" TextWrapping="Wrap"  TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <ToggleButton  
+            Visibility="{Binding DigitalOutputValueVisible}"
+            IsChecked="{Binding DigitalOutputValue}"
+            Content="{Binding DigitalOutputValueText}"
+            Grid.Column="2" Margin="2" />
+        <TextBlock 
+            Visibility="{Binding AnalogInputValueVisible}"
+            Text="{Binding AnalogInputValueText}"
+            Grid.Column="2" Margin="2" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <Slider    
+            Visibility="{Binding PwmValueVisible}"
+            Value="{Binding PwmValue}"
+            Maximum="255" Minimum="0" SmallChange="1" LargeChange="20"
+            Grid.Column="2"  Margin="2" />
+        <Slider    
+            Visibility="{Binding ServoValueVisible}"
+            Value="{Binding ServoValue}"
+            Maximum="180" Minimum="0" SmallChange="1" LargeChange="10"
+            Grid.Column="2"  Margin="2" />
+    </Grid>
+</UserControl>
